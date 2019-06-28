@@ -14,7 +14,7 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class LoginFormBean implements Serializable {
 
-    @ManagedProperty(value = "#{userBean}")
+    @ManagedProperty(value = "#{usuarioBean}")
     private UsuarioBean userBean;
 
     private String email;
