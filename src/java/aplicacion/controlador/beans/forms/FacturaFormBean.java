@@ -10,8 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.ToggleEvent;
-import org.primefaces.event.ToggleSelectEvent;
 
 @ManagedBean
 @RequestScoped
@@ -22,8 +20,9 @@ public class FacturaFormBean implements Serializable {
 
     private List<Factura> facturaList;
     private List<Factura> facturaSelected;
-        
     private double subTotal;
+    private String titularFactura;
+    private String domicilio;
 
     public FacturaFormBean() {
         Map<String, String> params = FacesContext.getCurrentInstance().
@@ -42,7 +41,14 @@ public class FacturaFormBean implements Serializable {
         int numeroDeServicio = (int)FacesContext.getCurrentInstance().getExternalContext()
                     .getSessionMap().get("numeroServicio");
        
-        facturaList = facturaBean.getFacturaListByServicio(numeroDeServicio);       
+        facturaList = facturaBean.getFacturaListByServicio(numeroDeServicio);
+        
+        for (Factura unaFactura : facturaList){
+            titularFactura = unaFactura.getTitularFactura();
+            domicilio = unaFactura.getDomicilio();
+            break;
+        }
+        
     }
     
     public FacturaBean getFacturaBean() {
@@ -83,6 +89,22 @@ public class FacturaFormBean implements Serializable {
 
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
+    }
+
+    public String getTitularFactura() {
+        return titularFactura;
+    }
+
+    public void setTitularFactura(String titularFactura) {
+        this.titularFactura = titularFactura;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
 

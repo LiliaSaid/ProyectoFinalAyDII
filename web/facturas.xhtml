@@ -18,10 +18,14 @@
 
                             <h:panelGrid columns="2" cellpadding="5">
                                 <p:outputLabel value="Titular:" for="titularText" />
-                                <p:inputText id="titularText" disabled="true" style="color: #000; opacity:.7;"/>
+                                <p:inputText id="titularText" disabled="true"
+                                             value="#{facturaFormBean.titularFactura}"
+                                             style="color: #000; opacity:.7;"/>
 
                                 <p:outputLabel value="Domicilio:" for="domicilioText" />
-                                <p:inputText id="domicilioText" disabled="true" style="color: #000; opacity:.7;"/>
+                                <p:inputText id="domicilioText" disabled="true" 
+                                             value="#{facturaFormBean.domicilio}"
+                                             style="color: #000; opacity:.7;"/>
                             </h:panelGrid>
 
                             <p:dataTable id="checkboxDT" var="factura" value="#{facturaFormBean.facturaList}" 
