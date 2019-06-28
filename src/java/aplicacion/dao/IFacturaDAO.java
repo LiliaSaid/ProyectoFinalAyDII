@@ -17,5 +17,5 @@ public interface IFacturaDAO {
     void borrar(Factura factura);
     void actualizar(Factura factura);
     List<Factura> obtenerFacturas();
-    List<Factura> obtenerFacturasSegunServicio(int numeroServicio);
+    List<Factura> obtenerFacturasSegunServicioYNumero(int servicio, int numero);
 }
