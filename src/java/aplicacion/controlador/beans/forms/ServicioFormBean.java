@@ -58,6 +58,8 @@ public class ServicioFormBean implements Serializable {
         this.numeroServicio = numeroServicio;
     }
     
-    
+    public String goToCrearServicio() {
+        return "crear-servicio?faces-redirect=true";
+    }
 
 }

@@ -24,7 +24,7 @@
                                                     completeMethod="#{servicioFormBean.autoCompletar}">
                                     </p:autoComplete>
                                     <span></span>
-                                    <p:commandButton value="Agregar"/>
+                                    <p:commandButton value="Agregar" action="#{servicioFormBean.goToCrearServicio}"/>
                                 </h:panelGroup>
                                 
                                 <p:outputLabel value="N° de Servicio:" for="numeroServicio" />
