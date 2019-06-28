@@ -27,12 +27,7 @@ public class Usuario {
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
-    }
-
-    public Usuario(String lilia, String said, String liliasaidgmailcom, String said2019) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
+    }  
     
     public int getId() {
         return id;

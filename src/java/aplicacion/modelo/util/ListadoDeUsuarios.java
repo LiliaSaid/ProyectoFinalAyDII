@@ -19,10 +19,10 @@ public class ListadoDeUsuarios implements Serializable{
 
     public ListadoDeUsuarios() {
         listaUsuarios = new ArrayList<>();
-        listaUsuarios.add(new Usuario("Lilia", "Said","liliasaid@gmail.com", "said2019"));
-        listaUsuarios.add(new Usuario("Romina", "Rojas","rominarojas@gmail.com", "rojas2019"));
-        listaUsuarios.add(new Usuario("Monica", "Tapia","monicatapia@gmail.com", "tapia2019"));
-        listaUsuarios.add(new Usuario("Carla", "Delgado","carladelgado@gmail.com", "delgado2019"));
+        listaUsuarios.add(new Usuario(1, "Lilia", "Said","liliasaid@gmail.com", "said2019"));
+        listaUsuarios.add(new Usuario(2, "Romina", "Rojas","rominarojas@gmail.com", "rojas2019"));
+        listaUsuarios.add(new Usuario(3, "Monica", "Tapia","monicatapia@gmail.com", "tapia2019"));
+        listaUsuarios.add(new Usuario(4, "Carla", "Delgado","carladelgado@gmail.com", "delgado2019"));
     }
     
     public void agregar(Usuario usuario){
