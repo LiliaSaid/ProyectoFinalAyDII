@@ -6,7 +6,7 @@
 package aplicacion.controlador.beans;
 
 import aplicacion.dao.IUsuarioDAO;
-import aplicacion.dao.imp.UsuarioDAOImp;
+import aplicacion.dao.imp.IUsuarioDAOImp;
 import aplicacion.modelo.dominio.Usuario;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -24,7 +24,7 @@ public class UsuarioBean {
      * Creates a new instance of UsuarioBean
      */
     public UsuarioBean() {
-        iUsuarioDAO = new UsuarioDAOImp();
+        iUsuarioDAO = new IUsuarioDAOImp();
     }
     
     public Usuario verifyCredentials(String email, String password) {

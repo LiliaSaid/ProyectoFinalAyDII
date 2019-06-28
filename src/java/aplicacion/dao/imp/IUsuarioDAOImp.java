@@ -15,11 +15,11 @@ import java.util.List;
  *
  * @author LILI-PC
  */
-public class UsuarioDAOImp implements Serializable, IUsuarioDAO{
+public class IUsuarioDAOImp implements Serializable, IUsuarioDAO{
 
     private ListadoDeUsuarios listadoUsuarios;
 
-    public UsuarioDAOImp() {
+    public IUsuarioDAOImp() {
         this.listadoUsuarios = new ListadoDeUsuarios();
     }
        

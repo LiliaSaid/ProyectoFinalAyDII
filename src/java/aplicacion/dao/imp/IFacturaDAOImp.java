@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author LILI-PC
  */
-public class FacturaDAOImp implements Serializable, IFacturaDAO{
+public class IFacturaDAOImp implements Serializable, IFacturaDAO{
 
     @Override
     public void crear() {
