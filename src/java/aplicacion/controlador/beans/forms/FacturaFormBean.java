@@ -22,38 +22,39 @@ public class FacturaFormBean implements Serializable {
 
     private List<Factura> facturaList;
     private List<Factura> facturaSelected;
-    
-    private int numeroDeServicio;
-    
+        
     private double subTotal;
 
     public FacturaFormBean() {
-        subTotal = 0;
-    }
-
-    @PostConstruct
-    public void init() {
         Map<String, String> params = FacesContext.getCurrentInstance().
                 getExternalContext().getRequestParameterMap();
 
         if (params.get("servicio") != null) {
-            numeroDeServicio = Integer.parseInt(params.get("servicio"));
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .getSessionMap().put(
+                            "numeroServicio", 
+                            Integer.parseInt(params.get("servicio")));
         }
-        
-        facturaList = facturaBean.getFacturaListByServicio(numeroDeServicio);
-        
     }
 
+    @PostConstruct
+    public void init() {
+        int numeroDeServicio = (int)FacesContext.getCurrentInstance().getExternalContext()
+                    .getSessionMap().get("numeroServicio");
+       
+        facturaList = facturaBean.getFacturaListByServicio(numeroDeServicio);       
+    }
+    
     public FacturaBean getFacturaBean() {
         return facturaBean;
     }
     
     public void toggleCheckbox(){
-        double subTotal = 0;
+        double newSubTotal = 0;
         for (Factura factura : facturaSelected){
-            subTotal += factura.getImporte();
+            newSubTotal += factura.getImporte();
         }
-        this.subTotal = subTotal;
+        this.subTotal = newSubTotal;
     }
 
     public void setFacturaBean(FacturaBean facturaBean) {
@@ -83,7 +84,6 @@ public class FacturaFormBean implements Serializable {
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
-    
-    
+
 
 }
