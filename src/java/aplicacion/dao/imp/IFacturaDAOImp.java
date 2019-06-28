@@ -6,7 +6,10 @@
 package aplicacion.dao.imp;
 
 import aplicacion.dao.IFacturaDAO;
+import aplicacion.modelo.dominio.Factura;
+import aplicacion.modelo.util.ListadoFacturas;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -14,19 +17,32 @@ import java.io.Serializable;
  */
 public class IFacturaDAOImp implements Serializable, IFacturaDAO{
 
-    @Override
-    public void crear() {
-        
+    ListadoFacturas listadoFacturas;
+
+    public IFacturaDAOImp() {
+        listadoFacturas = new ListadoFacturas();
     }
 
     @Override
-    public void borrar() {
-        
+    public void crear(Factura factura) {
+        listadoFacturas.agregar(factura);
     }
 
     @Override
-    public void actualizar() {
-        
+    public void borrar(Factura factura) {
+        listadoFacturas.eliminar(factura);
     }
+
+    @Override
+    public void actualizar(Factura factura) {
+        listadoFacturas.modificar(factura);
+    }
+
+    @Override
+    public List<Factura> obtenerFacturas() {
+        return listadoFacturas.getListaFactura();
+    }
+
+
     
 }

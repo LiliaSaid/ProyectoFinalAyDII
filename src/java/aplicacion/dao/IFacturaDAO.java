@@ -5,12 +5,16 @@
  */
 package aplicacion.dao;
 
+import aplicacion.modelo.dominio.Factura;
+import java.util.List;
+
 /**
  *
  * @author LILI-PC
  */
 public interface IFacturaDAO {
-    void crear();
-    void borrar();
-    void actualizar();
+    void crear(Factura factura);
+    void borrar(Factura factura);
+    void actualizar(Factura factura);
+    List<Factura> obtenerFacturas();
 }
