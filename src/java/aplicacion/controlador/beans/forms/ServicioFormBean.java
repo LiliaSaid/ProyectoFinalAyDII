@@ -46,9 +46,9 @@ public class ServicioFormBean implements Serializable {
         return results;
     }
     
-    public String buscarFacturasPorServicio(){
-        // TODO> Verificar si existe un numero de servicio antes de redireccionar.        
-        return "facturas?faces-redirect=true&servicio="+numeroServicio;
+    public String buscarFacturasPorServicioYEmpresa(){
+        return "facturas?faces-redirect=true&servicio="+servicio+
+                "&numero="+numeroServicio;
     }
 
     public ServicioBean getServicioBean() {
