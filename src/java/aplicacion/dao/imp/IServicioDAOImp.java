@@ -18,6 +18,10 @@ import java.util.List;
 public class IServicioDAOImp implements IServicioDAO, Serializable {
 
     private ListadoServicio listadoServicio;
+
+    public IServicioDAOImp() {
+        this.listadoServicio = new ListadoServicio();
+    }
     
     @Override
     public void crear(Servicio servicio) {

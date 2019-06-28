@@ -7,6 +7,8 @@ package aplicacion.controlador.beans;
 
 import aplicacion.dao.IServicioDAO;
 import aplicacion.dao.imp.IServicioDAOImp;
+import aplicacion.modelo.dominio.Servicio;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -26,7 +28,9 @@ public class ServicioBean {
         iServicioDAO = new IServicioDAOImp();
     }
     
-
+    public List<Servicio> getServicioList(){
+        return iServicioDAO.obtenerServicios();
+    }
     
     
 }
