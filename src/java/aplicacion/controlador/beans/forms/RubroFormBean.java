@@ -1,6 +1,7 @@
 package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.ServicioBean;
+import aplicacion.controlador.beans.UsuarioBean;
 import aplicacion.modelo.dominio.Servicio;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.IOException;
@@ -19,14 +20,19 @@ public class RubroFormBean implements Serializable {
     @ManagedProperty(value = "#{servicioBean}")
     private ServicioBean servicioBean;
 
+    @ManagedProperty(value = "#{usuarioBean}")
+    private UsuarioBean usuarioBean;
+
+    private Usuario usuario;
+
     private String rubro;
     private String empresa;
     private List<Servicio> servicioList;
     private List<String> rubroList;
 
     public RubroFormBean() {
-        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-        if (user == null) {
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        if (usuario == null) {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
             } catch (IOException ex) {
@@ -37,9 +43,14 @@ public class RubroFormBean implements Serializable {
     @PostConstruct
     public void init() {
         rubroList = servicioBean.getRubroList();
-
         servicioList = servicioBean.getServicioList();
+    }
 
+    public String agregarServicio() {
+        usuario.addServiciosHabilitados(Integer.parseInt(empresa));
+        usuarioBean.actualizar(usuario);
+
+        return "pagar-servicio?faces-redirect=true";
     }
 
     public void applyFilter() {
@@ -74,10 +85,6 @@ public class RubroFormBean implements Serializable {
         this.empresa = empresa;
     }
 
-    public String goToPagarServicio() {
-        return "pagar-servicio?faces-redirect=true";
-    }
-
     public List<String> getRubroList() {
         return rubroList;
     }
@@ -92,6 +99,22 @@ public class RubroFormBean implements Serializable {
 
     public void setServicioList(List<Servicio> servicioList) {
         this.servicioList = servicioList;
+    }
+
+    public UsuarioBean getUsuarioBean() {
+        return usuarioBean;
+    }
+
+    public void setUsuarioBean(UsuarioBean usuarioBean) {
+        this.usuarioBean = usuarioBean;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }
