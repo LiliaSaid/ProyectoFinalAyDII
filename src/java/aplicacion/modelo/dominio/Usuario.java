@@ -5,20 +5,23 @@
  */
 package aplicacion.modelo.dominio;
 
+import java.util.List;
+
 /**
  *
  * @author LILI-PC
  */
 public class Usuario {
-   private int id;
-   private String nombre;
-   private String apellido;
-   private String correo;
-   private String contraseña;
+
+    private int id;
+    private String nombre;
+    private String apellido;
+    private String correo;
+    private String contraseña;
+    private List<Integer> serviciosHabilitados;
 
     public Usuario() {
-        
-        
+
     }
 
     public Usuario(int id, String nombre, String apellido, String correo, String contraseña) {
@@ -27,8 +30,30 @@ public class Usuario {
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
-    }  
-    
+    }
+
+    public Usuario(int id, String nombre, String apellido, String correo, String contraseña, List<Integer> serviciosHabilitados) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.serviciosHabilitados = serviciosHabilitados;
+    }
+
+    public Usuario(int id, String nombre, String apellido, String correo, String contraseña, int[] serviciosHabilitados) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
+
+        for (int i = 0; i < serviciosHabilitados.length; i++) {
+            this.serviciosHabilitados.add(serviciosHabilitados[i]);
+        }
+        
+    }
+
     public int getId() {
         return id;
     }
@@ -68,6 +93,13 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-   
-   
+
+    public List<Integer> getServiciosHabilitados() {
+        return serviciosHabilitados;
+    }
+
+    public void setServiciosHabilitados(List<Integer> serviciosHabilitados) {
+        this.serviciosHabilitados = serviciosHabilitados;
+    }
+
 }
