@@ -28,10 +28,12 @@
                                 </h:panelGroup>
                                 
                                 <p:outputLabel value="N° de Servicio:" for="numeroServicio" />
-                                <p:inputNumber id="numeroServicio" value="#{servicioFormBean.numeroServicio}"/>
+                                <p:inputNumber id="numeroServicio" 
+                                               decimalPlaces="0" decimalSeparator="0" 
+                                               value="#{servicioFormBean.numeroServicio}"/>
                             </h:panelGrid>
                             
-                            <p:commandButton value="BUSCAR"/>
+                            <p:commandButton value="BUSCAR" action="#{servicioFormBean.buscarFacturasPorServicio}"/>
                             
 
                         </h:form>
