@@ -32,5 +32,8 @@ public class FacturaBean {
         return iFacturaDAO.obtenerFacturas();
     }
     
+    public List<Factura> getFacturaListByServicio(int numeroServicio){
+        return iFacturaDAO.obtenerFacturasSegunServicio(numeroServicio);
+    }
     
 }
