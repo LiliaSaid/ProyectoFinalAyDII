@@ -9,6 +9,7 @@ import aplicacion.dao.IServicioDAO;
 import aplicacion.modelo.dominio.Servicio;
 import aplicacion.modelo.util.ListadoServicio;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,6 +42,32 @@ public class IServicioDAOImp implements IServicioDAO, Serializable {
     @Override
     public List<Servicio> obtenerServicios() {
         return listadoServicio.getListaServicios();
+    }
+
+    @Override
+    public List<String> obtenerRubros() {
+        List<String> rubroList = new ArrayList<>();
+        
+        for (Servicio servicio : obtenerServicios()){
+            if (rubroList.contains(servicio.getRubro()))
+                continue;
+            
+            rubroList.add(servicio.getRubro());
+        }
+        
+        return rubroList;
+    }
+
+    @Override
+    public List<Servicio> obtenerServiciosPorRubro(String rubro) {
+        List<Servicio> servicioList = new ArrayList<>();
+        
+        for (Servicio unServicio : obtenerServicios()){
+            if (unServicio.getRubro().equals(rubro))
+                servicioList.add(unServicio);
+        }
+        
+        return servicioList;
     }
     
 }
