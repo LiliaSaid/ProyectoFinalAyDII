@@ -18,7 +18,11 @@ import java.util.List;
 public class UsuarioDAOImp implements Serializable, IUsuarioDAO{
 
     private ListadoDeUsuarios listadoUsuarios;
-    
+
+    public UsuarioDAOImp() {
+        this.listadoUsuarios = new ListadoDeUsuarios();
+    }
+       
     @Override
     public void crear(Usuario usuario) {
         listadoUsuarios.agregar(usuario);
