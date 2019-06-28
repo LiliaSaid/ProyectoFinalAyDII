@@ -19,6 +19,8 @@ public class ListadoServicio {
     public ListadoServicio() {
         listaServicios = new ArrayList<>();
         listaServicios.add(new Servicio(1, "Energia", "Ejesa"));
+        listaServicios.add(new Servicio(2, "Energia", "La lo"));
+        listaServicios.add(new Servicio(3, "Energia", "La le"));
     }    
     
     public void agregar(Servicio servicio){

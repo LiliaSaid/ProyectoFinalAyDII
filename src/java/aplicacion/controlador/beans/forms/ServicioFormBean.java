@@ -17,16 +17,17 @@ public class ServicioFormBean implements Serializable {
     private ServicioBean servicioBean;
 
     private String servicio;
+    private String numeroServicio;
 
     public ServicioFormBean() {
     }
 
-    public List<String> autoCompletar(String query) {
-        List<String> results = new ArrayList<String>();
+    public List<Servicio> autoCompletar(String query) {
+        List<Servicio> results = new ArrayList<>();
 
         for (Servicio unServicio : servicioBean.getServicioList()) {
             if (query.contains(query)) {
-                results.add(unServicio.getNombre());
+                results.add(unServicio);
             }
         }
 
@@ -48,5 +49,15 @@ public class ServicioFormBean implements Serializable {
     public void setServicio(String servicio) {
         this.servicio = servicio;
     }
+
+    public String getNumeroServicio() {
+        return numeroServicio;
+    }
+
+    public void setNumeroServicio(String numeroServicio) {
+        this.numeroServicio = numeroServicio;
+    }
+    
+    
 
 }
