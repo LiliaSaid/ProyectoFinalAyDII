@@ -2,12 +2,14 @@ package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.ServicioBean;
 import aplicacion.modelo.dominio.Servicio;
+import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @RequestScoped
@@ -19,13 +21,15 @@ public class ServicioFormBean implements Serializable {
     private String servicio;
     private String numeroServicio;
 
-    public ServicioFormBean() {
+    public ServicioFormBean() {        
     }
-
+    
     public List<Servicio> autoCompletar(String query) {
         List<Servicio> results = new ArrayList<>();
 
-        for (Servicio unServicio : servicioBean.getServicioList()) {
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        
+        for (Servicio unServicio : servicioBean.obtenerServiciosPorIds(user.getServiciosHabilitados())) {
             if (query.contains(query)) {
                 results.add(unServicio);
             }

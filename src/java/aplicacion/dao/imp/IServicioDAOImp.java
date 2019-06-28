@@ -23,7 +23,7 @@ public class IServicioDAOImp implements IServicioDAO, Serializable {
     public IServicioDAOImp() {
         this.listadoServicio = new ListadoServicio();
     }
-    
+
     @Override
     public void crear(Servicio servicio) {
         listadoServicio.agregar(servicio);
@@ -47,27 +47,42 @@ public class IServicioDAOImp implements IServicioDAO, Serializable {
     @Override
     public List<String> obtenerRubros() {
         List<String> rubroList = new ArrayList<>();
-        
-        for (Servicio servicio : obtenerServicios()){
-            if (rubroList.contains(servicio.getRubro()))
+
+        for (Servicio servicio : obtenerServicios()) {
+            if (rubroList.contains(servicio.getRubro())) {
                 continue;
-            
+            }
+
             rubroList.add(servicio.getRubro());
         }
-        
+
         return rubroList;
     }
 
     @Override
     public List<Servicio> obtenerServiciosPorRubro(String rubro) {
         List<Servicio> servicioList = new ArrayList<>();
-        
-        for (Servicio unServicio : obtenerServicios()){
-            if (unServicio.getRubro().equals(rubro))
+
+        for (Servicio unServicio : obtenerServicios()) {
+            if (unServicio.getRubro().equals(rubro)) {
                 servicioList.add(unServicio);
+            }
         }
-        
+
         return servicioList;
     }
-    
+
+    @Override
+    public List<Servicio> obtenerServiciosPorIds(List<Integer> serviciosIds) {
+        List<Servicio> servicioList = new ArrayList<>();
+
+        for (Servicio unServicio : obtenerServicios()) {
+            if (serviciosIds.contains(unServicio.getId())) {
+                servicioList.add(unServicio);
+            }
+        }
+
+        return servicioList;
+    }
+
 }
