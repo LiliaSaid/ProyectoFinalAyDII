@@ -29,11 +29,16 @@
                                 
                                 <p:outputLabel value="N° de Servicio:" for="numeroServicio" />
                                 <p:inputNumber id="numeroServicio" 
-                                               decimalPlaces="0" decimalSeparator="0" 
+                                               decimalPlaces="0" required ="true"
+                                               requiredMessage="Por favor, ingrese un numero de servicio"
                                                value="#{servicioFormBean.numeroServicio}"/>
                             </h:panelGrid>
                             
-                            <p:commandButton value="BUSCAR" action="#{servicioFormBean.buscarFacturasPorServicio}"/>
+                            <p:message for="numeroServicio" id="inLineMessages" 
+                                       style="margin: 10px 0 20px" />
+                            
+                            <p:commandButton value="BUSCAR" update="inLineMessages" action="#{servicioFormBean.buscarFacturasPorServicio}"/>
+                            <br/>
                             
 
                         </h:form>
