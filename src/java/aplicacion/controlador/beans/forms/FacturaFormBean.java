@@ -4,10 +4,12 @@ import aplicacion.controlador.beans.FacturaBean;
 import aplicacion.modelo.dominio.Factura;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.ToggleEvent;
 import org.primefaces.event.ToggleSelectEvent;
 
@@ -21,6 +23,8 @@ public class FacturaFormBean implements Serializable {
     private List<Factura> facturaList;
     private List<Factura> facturaSelected;
     
+    private int numeroDeServicio;
+    
     private double subTotal;
 
     public FacturaFormBean() {
@@ -29,7 +33,15 @@ public class FacturaFormBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        facturaList = facturaBean.getFacturaList();
+        Map<String, String> params = FacesContext.getCurrentInstance().
+                getExternalContext().getRequestParameterMap();
+
+        if (params.get("servicio") != null) {
+            numeroDeServicio = Integer.parseInt(params.get("servicio"));
+        }
+        
+        facturaList = facturaBean.getFacturaListByServicio(numeroDeServicio);
+        
     }
 
     public FacturaBean getFacturaBean() {
