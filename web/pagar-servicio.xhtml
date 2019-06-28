@@ -18,8 +18,8 @@
                             <h:panelGrid columns="2" cellpadding="5">
                                 <p:outputLabel value="Servicio:" for="servicioList" />
                                 <p:autoComplete id="servicioList" dropdown="true" 
-                                                value="#{autoCompleteView.txt6}" 
-                                                completeMethod="#{autoCompleteView.completeText}" />
+                                                value="#{servicioFormBean.servicio}" 
+                                                completeMethod="#{servicioFormBean.autoCompletar}" />
                             </h:panelGrid>
 
 
