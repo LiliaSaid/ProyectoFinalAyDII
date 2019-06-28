@@ -10,10 +10,37 @@ package aplicacion.modelo.dominio;
  * @author LILI-PC
  */
 public class Usuario {
+   private int id;
    private String nombre;
    private String apellido;
    private String correo;
    private String contraseña;
+
+    public Usuario() {
+        
+        
+    }
+
+    public Usuario(int id, String nombre, String apellido, String correo, String contraseña) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
+    }
+
+    public Usuario(String lilia, String said, String liliasaidgmailcom, String said2019) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
