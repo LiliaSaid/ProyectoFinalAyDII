@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    </h:head>
+    <h:body>
+        <ui:composition template="./resources/Template/Facelet.xhtml"> 
+            <ui:define name="content">
+
+                <p:panel header="Crear servicio">
+                    <center>
+                        <h:form>
+                            <p:growl id="mensajes" showDetail="true"/>
+
+                            <h:panelGrid columns="1" cellpadding="5">
+                                <p:outputLabel value="Buscar empresa por rubro:" for="rubroList" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="rubroList" 
+                                                     value="#{rubroFormBean.rubro}">
+                                        
+                                        <f:selectItem itemLabel="Telefonia" itemValue="1"/>
+                                        <f:selectItem itemLabel="Proveedores de Internet" itemValue="2"/>
+                                        <f:selectItem itemLabel="Operadoras de TV" itemValue="3"/>
+                                    </p:selectOneMenu>
+
+                                </h:panelGroup>
+
+                                <p:outputLabel for="empresaList" value="Empresa" />
+                                <p:selectOneListbox id="empresaList" value="#{rubroFormBean.empresa}">
+                                    <f:selectItem itemLabel="Canal 2" itemValue="1" />
+                                    <f:selectItem itemLabel="Canal 4" itemValue="2" />
+                                </p:selectOneListbox>
+
+                            </h:panelGrid>
+
+                            <p:commandButton value="Crear" action="#{rubroFormBean.goToPagarServicio()}" />
+
+
+                        </h:form>
+                    </center>
+                </p:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
