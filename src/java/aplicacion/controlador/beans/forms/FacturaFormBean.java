@@ -2,6 +2,8 @@ package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.FacturaBean;
 import aplicacion.modelo.dominio.Factura;
+import aplicacion.modelo.dominio.Usuario;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -25,39 +27,47 @@ public class FacturaFormBean implements Serializable {
     private String domicilio;
 
     public FacturaFormBean() {
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        if (user == null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+            } catch (IOException ex) {
+            }
+        }
+        
         Map<String, String> params = FacesContext.getCurrentInstance().
                 getExternalContext().getRequestParameterMap();
 
         if (params.get("servicio") != null) {
             FacesContext.getCurrentInstance().getExternalContext()
                     .getSessionMap().put(
-                            "numeroServicio", 
+                            "numeroServicio",
                             Integer.parseInt(params.get("servicio")));
         }
     }
 
     @PostConstruct
     public void init() {
-        int numeroDeServicio = (int)FacesContext.getCurrentInstance().getExternalContext()
-                    .getSessionMap().get("numeroServicio");
-       
+        int numeroDeServicio = (int) FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().get("numeroServicio");
+
         facturaList = facturaBean.getFacturaListByServicio(numeroDeServicio);
-        
-        for (Factura unaFactura : facturaList){
+
+        for (Factura unaFactura : facturaList) {
             titularFactura = unaFactura.getTitularFactura();
             domicilio = unaFactura.getDomicilio();
             break;
         }
-        
+
     }
-    
+
     public FacturaBean getFacturaBean() {
         return facturaBean;
     }
-    
-    public void toggleCheckbox(){
+
+    public void toggleCheckbox() {
         double newSubTotal = 0;
-        for (Factura factura : facturaSelected){
+        for (Factura factura : facturaSelected) {
             newSubTotal += factura.getImporte();
         }
         this.subTotal = newSubTotal;
@@ -106,6 +116,5 @@ public class FacturaFormBean implements Serializable {
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
-
 
 }

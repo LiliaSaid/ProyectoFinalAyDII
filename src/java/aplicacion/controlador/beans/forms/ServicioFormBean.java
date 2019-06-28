@@ -3,6 +3,7 @@ package aplicacion.controlador.beans.forms;
 import aplicacion.controlador.beans.ServicioBean;
 import aplicacion.modelo.dominio.Servicio;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,14 @@ public class ServicioFormBean implements Serializable {
     private String servicio;
     private String numeroServicio;
 
-    public ServicioFormBean() {        
+    public ServicioFormBean() {
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        if (user == null){
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+            } catch (IOException ex) {
+            }
+        }
     }
     
     public List<Servicio> autoCompletar(String query) {

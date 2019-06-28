@@ -2,12 +2,15 @@ package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.ServicioBean;
 import aplicacion.modelo.dominio.Servicio;
+import aplicacion.modelo.dominio.Usuario;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @RequestScoped
@@ -22,7 +25,13 @@ public class RubroFormBean implements Serializable {
     private List<String> rubroList;
 
     public RubroFormBean() {
-
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        if (user == null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+            } catch (IOException ex) {
+            }
+        }
     }
 
     @PostConstruct
