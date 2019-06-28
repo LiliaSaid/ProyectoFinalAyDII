@@ -9,9 +9,28 @@ package aplicacion.modelo.dominio;
  *
  * @author LILI-PC
  */
-public class servicio {
+public class Servicio {
+    private int id;
     private String rubro;
     private String nombre;
+
+    public Servicio() {
+        
+    }
+    
+    public Servicio(int id, String rubro, String nombre) {
+        this.id = id;
+        this.rubro = rubro;
+        this.nombre = nombre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getRubro() {
         return rubro;
