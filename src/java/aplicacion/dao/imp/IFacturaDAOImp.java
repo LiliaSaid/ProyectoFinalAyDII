@@ -9,13 +9,14 @@ import aplicacion.dao.IFacturaDAO;
 import aplicacion.modelo.dominio.Factura;
 import aplicacion.modelo.util.ListadoFacturas;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author LILI-PC
  */
-public class IFacturaDAOImp implements Serializable, IFacturaDAO{
+public class IFacturaDAOImp implements Serializable, IFacturaDAO {
 
     ListadoFacturas listadoFacturas;
 
@@ -43,6 +44,16 @@ public class IFacturaDAOImp implements Serializable, IFacturaDAO{
         return listadoFacturas.getListaFactura();
     }
 
+    @Override
+    public List<Factura> obtenerFacturasSegunServicio(int numeroServicio) {
+        List<Factura> listadoFacturas = new ArrayList<>();
 
-    
+        for (Factura unaFactura : obtenerFacturas()) {
+            if (unaFactura.getNumeroDeServicio() == numeroServicio) {
+                listadoFacturas.add(unaFactura);
+            }
+        }
+        return listadoFacturas;
+    }
+
 }
