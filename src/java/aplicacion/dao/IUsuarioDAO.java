@@ -5,12 +5,19 @@
  */
 package aplicacion.dao;
 
+import aplicacion.modelo.dominio.Usuario;
+import java.util.List;
+
 /**
  *
  * @author LILI-PC
  */
-public interface IUsuario {
-    void crear();
-    void borrar();
-    void actualizar();
+public interface IUsuarioDAO {
+    void crear(Usuario usuario);
+    void borrar(Usuario usuario);
+    void actualizar(Usuario usuario);
+    List<Usuario> obtenerUsuarios();
+
+    public Usuario verificarCredenciales(String email, String password);
+    
 }

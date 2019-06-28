@@ -5,14 +5,14 @@
  */
 package aplicacion.dao.imp;
 
-import aplicacion.dao.IFactura;
+import aplicacion.dao.IFacturaDAO;
 import java.io.Serializable;
 
 /**
  *
  * @author LILI-PC
  */
-public class FacturaDAOImp implements Serializable, IFactura{
+public class FacturaDAOImp implements Serializable, IFacturaDAO{
 
     @Override
     public void crear() {

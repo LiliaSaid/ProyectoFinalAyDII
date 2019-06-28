@@ -9,7 +9,7 @@ package aplicacion.dao;
  *
  * @author LILI-PC
  */
-public interface IFactura {
+public interface IFacturaDAO {
     void crear();
     void borrar();
     void actualizar();
