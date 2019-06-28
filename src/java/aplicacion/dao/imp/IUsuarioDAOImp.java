@@ -7,7 +7,7 @@ package aplicacion.dao.imp;
 
 import aplicacion.dao.IUsuarioDAO;
 import aplicacion.modelo.dominio.Usuario;
-import aplicacion.modelo.util.ListadoDeUsuarios;
+import aplicacion.modelo.util.ListadoUsuarios;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,10 +17,10 @@ import java.util.List;
  */
 public class IUsuarioDAOImp implements Serializable, IUsuarioDAO{
 
-    private ListadoDeUsuarios listadoUsuarios;
+    private ListadoUsuarios listadoUsuarios;
 
     public IUsuarioDAOImp() {
-        this.listadoUsuarios = new ListadoDeUsuarios();
+        this.listadoUsuarios = new ListadoUsuarios();
     }
        
     @Override

@@ -13,10 +13,10 @@ import java.util.List;
  *
  * @author LILI-PC
  */
-public class ListadoDeFacturas {
+public class ListadoFacturas {
     private List<Factura> listaFacturas;
        
-    public ListadoDeFacturas() {
+    public ListadoFacturas() {
         listaFacturas = new ArrayList<>();
         listaFacturas.add(new Factura(1,218003,34888237,"Los Pinos N°331 B°Alto Palpalá",800,"Said, Lilia"));
         listaFacturas.add(new Factura(2,218003,34888395,"Los Pinos N°331 B°Alto Palpalá",1200,"Said, Lilia"));

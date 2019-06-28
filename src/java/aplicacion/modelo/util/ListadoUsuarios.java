@@ -14,10 +14,10 @@ import java.util.List;
  *
  * @author LILI-PC
  */
-public class ListadoDeUsuarios implements Serializable{
+public class ListadoUsuarios implements Serializable{
     private List<Usuario> listaUsuarios;
 
-    public ListadoDeUsuarios() {
+    public ListadoUsuarios() {
         listaUsuarios = new ArrayList<>();
         listaUsuarios.add(new Usuario(1, "Lilia", "Said","liliasaid@gmail.com", "said2019"));
         listaUsuarios.add(new Usuario(2, "Romina", "Rojas","rominarojas@gmail.com", "rojas2019"));
