@@ -33,6 +33,11 @@ public class ServicioFormBean implements Serializable {
 
         return results;
     }
+    
+    public String buscarFacturasPorServicio(){
+        // TODO> Verificar si existe un numero de servicio antes de redireccionar.        
+        return "facturas?faces-redirect=true&servicio="+numeroServicio;
+    }
 
     public ServicioBean getServicioBean() {
         return servicioBean;
