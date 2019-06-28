@@ -11,38 +11,36 @@
             <ui:define name="content">
 
                 <p:panel header="Pague sus servicios">
-                    <center>
-                        <h:form>
-                            <p:growl id="mensajes" showDetail="true"/>
+                    <h:form>
+                        <p:growl id="mensajes" showDetail="true"/>
 
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <p:outputLabel value="Servicio:" for="servicioList" />
-                                <h:panelGroup>
-                                    <p:autoComplete id="servicioList" dropdown="true" var="unServicio"
-                                                    itemValue="#{unServicio.id}" itemLabel="#{unServicio.nombre}"
-                                                    value="#{servicioFormBean.servicio}" 
-                                                    completeMethod="#{servicioFormBean.autoCompletar}">
-                                    </p:autoComplete>
-                                    <span></span>
-                                    <p:commandButton value="Agregar" action="#{servicioFormBean.goToCrearServicio}"/>
-                                </h:panelGroup>
-                                
-                                <p:outputLabel value="N° de Servicio:" for="numeroServicio" />
-                                <p:inputNumber id="numeroServicio" 
-                                               decimalPlaces="0" required ="true"
-                                               requiredMessage="Por favor, ingrese un numero de servicio"
-                                               value="#{servicioFormBean.numeroServicio}"/>
-                            </h:panelGrid>
-                            
-                            <p:message for="numeroServicio" id="inLineMessages" 
-                                       style="margin: 10px 0 20px" />
-                            
-                            <p:commandButton value="BUSCAR" update="inLineMessages" action="#{servicioFormBean.buscarFacturasPorServicio}"/>
-                            <br/>
-                            
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel value="Servicio:" for="servicioList" />
+                            <h:panelGroup>
+                                <p:autoComplete id="servicioList" dropdown="true" var="unServicio"
+                                                itemValue="#{unServicio.id}" itemLabel="#{unServicio.nombre}"
+                                                value="#{servicioFormBean.servicio}" 
+                                                completeMethod="#{servicioFormBean.autoCompletar}">
+                                </p:autoComplete>
+                                <span></span>
+                                <p:commandButton value="Agregar" immediate="true" action="#{servicioFormBean.goToCrearServicio}"/>
+                            </h:panelGroup>
 
-                        </h:form>
-                    </center>
+                            <p:outputLabel value="N° de Servicio:" for="numeroServicio" />
+                            <p:inputNumber id="numeroServicio" 
+                                           decimalPlaces="0" required ="true"
+                                           requiredMessage="Por favor, ingrese un numero de servicio"
+                                           value="#{servicioFormBean.numeroServicio}"/>
+                        </h:panelGrid>
+
+                        <p:message for="numeroServicio" id="inLineMessages" 
+                                   style="margin: 10px 0 20px" />
+
+                        <p:commandButton value="BUSCAR" update="inLineMessages" action="#{servicioFormBean.buscarFacturasPorServicio}"/>
+                        <br/>
+
+
+                    </h:form>
                 </p:panel>
             </ui:define>
         </ui:composition>
