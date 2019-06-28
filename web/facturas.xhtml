@@ -13,21 +13,24 @@
 
                 <p:panel header="Pague sus servicios">
                     <center>
-                        <h:form>
+                        <h:form id="pagoServiciosForm">
                             <p:growl id="mensajes" showDetail="true"/>
 
                             <h:panelGrid columns="2" cellpadding="5">
                                 <p:outputLabel value="Titular:" for="titularText" />
-                                <p:inputText id="titularText" disabled="true" />
+                                <p:inputText id="titularText" disabled="true" style="color: #000; opacity:.7;"/>
 
                                 <p:outputLabel value="Domicilio:" for="domicilioText" />
-                                <p:inputText id="domicilioText" disabled="true" />
+                                <p:inputText id="domicilioText" disabled="true" style="color: #000; opacity:.7;"/>
                             </h:panelGrid>
 
                             <p:dataTable id="checkboxDT" var="factura" value="#{facturaFormBean.facturaList}" 
                                          selection="#{facturaFormBean.facturaSelected}" 
                                          rowKey="#{factura.id}" rowSelectMode="checkbox"
                                          style="margin-bottom:0">
+                                <p:ajax event="rowSelectCheckbox" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm:subTotalText"/>
+                                <p:ajax event="rowUnselectCheckbox" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm:subTotalText" />
+                                <p:ajax event="toggleSelect" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm:subTotalText" />
                                 <f:facet name="header">
                                     Facturas
                                 </f:facet>
@@ -35,14 +38,34 @@
                                     <h:outputText value="#{factura.numeroDeFactura}" />
                                 </p:column>
                                 <p:column headerText="Importe">
-                                    <h:outputText value="#{factura.importe}" />
+                                    <h:outputText value="#{factura.importe}">
+                                        <f:convertNumber currencySymbol="$ " 
+                                                         type="currency" 
+                                                         maxIntegerDigits="5" 
+                                                         maxFractionDigits="2"
+                                                         locale="es_AR"/>
+                                    </h:outputText>
                                 </p:column>
 
                                 <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                                
                             </p:dataTable>
-                            
-                            <p:commandButton value="Enviar"/>
 
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:panelGroup>
+                                    <p:outputLabel value="SubTotal: " for="subTotalText" />
+                                    <p:inputText id="subTotalText" disabled="true" value="#{facturaFormBean.subTotal}"
+                                                 style="color: #000; opacity:.7;">
+                                        <f:convertNumber currencySymbol="$ " 
+                                                         type="currency" 
+                                                         maxIntegerDigits="5" 
+                                                         maxFractionDigits="2"
+                                                         locale="es_AR"/>
+                                    </p:inputText>
+                                </h:panelGroup>
+
+                                <p:commandButton value="Enviar"/>
+                            </h:panelGrid>
 
                         </h:form>
                     </center>

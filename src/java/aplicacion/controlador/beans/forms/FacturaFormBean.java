@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import org.primefaces.event.ToggleEvent;
+import org.primefaces.event.ToggleSelectEvent;
 
 @ManagedBean
 @RequestScoped
@@ -17,11 +19,14 @@ public class FacturaFormBean implements Serializable {
     private FacturaBean facturaBean;
 
     private List<Factura> facturaList;
-    private List<Factura> facturaSelected;    
+    private List<Factura> facturaSelected;
     
+    private double subTotal;
+
     public FacturaFormBean() {
+        subTotal = 0;
     }
-    
+
     @PostConstruct
     public void init() {
         facturaList = facturaBean.getFacturaList();
@@ -29,6 +34,14 @@ public class FacturaFormBean implements Serializable {
 
     public FacturaBean getFacturaBean() {
         return facturaBean;
+    }
+    
+    public void toggleCheckbox(){
+        double subTotal = 0;
+        for (Factura factura : facturaSelected){
+            subTotal += factura.getImporte();
+        }
+        this.subTotal = subTotal;
     }
 
     public void setFacturaBean(FacturaBean facturaBean) {
@@ -50,8 +63,15 @@ public class FacturaFormBean implements Serializable {
     public void setFacturaSelected(List<Factura> facturaSelected) {
         this.facturaSelected = facturaSelected;
     }
-    
-    
 
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+    
+    
 
 }
