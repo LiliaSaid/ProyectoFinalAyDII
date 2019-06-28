@@ -20,17 +20,18 @@ import javax.faces.bean.RequestScoped;
 public class UsuarioBean {
 
     private IUsuarioDAO iUsuarioDAO;
+
     /**
      * Creates a new instance of UsuarioBean
      */
     public UsuarioBean() {
         iUsuarioDAO = new IUsuarioDAOImp();
     }
-    
+
     public Usuario verifyCredentials(String email, String password) {
-     return iUsuarioDAO.verificarCredenciales(email, password);
+        return iUsuarioDAO.verificarCredenciales(email, password);
     }
-    
+
     public void registerNewUser(Usuario user) {
         iUsuarioDAO.crear(user);
     }
@@ -42,6 +43,9 @@ public class UsuarioBean {
     public void setiUserDAO(IUsuarioDAO iUsuarioDAO) {
         this.iUsuarioDAO = iUsuarioDAO;
     }
-    
-    
+
+    public void actualizar(Usuario user) {
+        iUsuarioDAO.actualizar(user);
+    }
+
 }

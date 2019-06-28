@@ -5,6 +5,7 @@
  */
 package aplicacion.modelo.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class Usuario {
     private List<Integer> serviciosHabilitados;
 
     public Usuario() {
-
+        this.serviciosHabilitados = new ArrayList<>();
     }
 
     public Usuario(int id, String nombre, String apellido, String correo, String contraseña) {
@@ -30,6 +31,7 @@ public class Usuario {
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
+        this.serviciosHabilitados = new ArrayList<>();
     }
 
     public Usuario(int id, String nombre, String apellido, String correo, String contraseña, List<Integer> serviciosHabilitados) {
@@ -39,19 +41,6 @@ public class Usuario {
         this.correo = correo;
         this.contraseña = contraseña;
         this.serviciosHabilitados = serviciosHabilitados;
-    }
-
-    public Usuario(int id, String nombre, String apellido, String correo, String contraseña, int[] serviciosHabilitados) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.contraseña = contraseña;
-
-        for (int i = 0; i < serviciosHabilitados.length; i++) {
-            this.serviciosHabilitados.add(serviciosHabilitados[i]);
-        }
-        
     }
 
     public int getId() {
@@ -102,4 +91,7 @@ public class Usuario {
         this.serviciosHabilitados = serviciosHabilitados;
     }
 
+    public void addServiciosHabilitados(Integer servicioHabilitado) {
+        this.serviciosHabilitados.add(servicioHabilitado);
+    }
 }
