@@ -85,4 +85,18 @@ public class IServicioDAOImp implements IServicioDAO, Serializable {
         return servicioList;
     }
 
+    @Override
+    public Servicio obtenerUnServicioPorId(int servicioId) {
+        Servicio servicio = null;
+
+        for (Servicio unServicio : obtenerServicios()) {
+            if (unServicio.getId() == servicioId ) {
+                servicio = unServicio;
+                break;
+            }
+        }
+
+        return servicio;
+    }
+
 }

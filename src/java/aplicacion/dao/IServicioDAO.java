@@ -21,4 +21,6 @@ public interface IServicioDAO {
     List<Servicio> obtenerServiciosPorRubro(String rubro);
     List<String> obtenerRubros();
     List<Servicio> obtenerServiciosPorIds(List<Integer> serviciosIds);
+
+    public Servicio obtenerUnServicioPorId(int servicioId);
 }

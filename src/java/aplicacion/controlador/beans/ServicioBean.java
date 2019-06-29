@@ -44,5 +44,9 @@ public class ServicioBean {
     public List<Servicio> obtenerServiciosPorIds(List<Integer> serviciosIds) {
         return iServicioDAO.obtenerServiciosPorIds(serviciosIds);
     }
+    
+    public Servicio obtenerUnServicioPorId(int servicioId){
+        return iServicioDAO.obtenerUnServicioPorId(servicioId);
+    }
 
 }
