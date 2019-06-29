@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -19,36 +20,38 @@ public class ServicioFormBean implements Serializable {
     @ManagedProperty(value = "#{servicioBean}")
     private ServicioBean servicioBean;
 
+    private List<Servicio> servicioList;
     private String servicio;
     private String numeroServicio;
 
     public ServicioFormBean() {
+        servicioList = new ArrayList<>();
         Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-        if (user == null){
+        if (user == null) {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
             } catch (IOException ex) {
             }
         }
     }
-    
-    public List<Servicio> autoCompletar(String query) {
-        List<Servicio> results = new ArrayList<>();
 
+    @PostConstruct
+    public void init() {
         Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-        
-        for (Servicio unServicio : servicioBean.obtenerServiciosPorIds(user.getServiciosHabilitados())) {
-            if (query.contains(query)) {
-                results.add(unServicio);
-            }
+        if (user != null) {
+            servicioList = servicioBean.obtenerServiciosPorIds(user.getServiciosHabilitados());
         }
-
-        return results;
     }
-    
-    public String buscarFacturasPorServicioYEmpresa(){
-        return "facturas?faces-redirect=true&empresa="+servicio+
-                "&numero="+numeroServicio;
+
+    public String buscarFacturasPorServicioYEmpresa() {
+        FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().put("numero", null);
+
+        FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().put("empresa", null);
+
+        return "facturas?faces-redirect=true&empresa=" + servicio
+                + "&numero=" + numeroServicio;
     }
 
     public ServicioBean getServicioBean() {
@@ -74,9 +77,17 @@ public class ServicioFormBean implements Serializable {
     public void setNumeroServicio(String numeroServicio) {
         this.numeroServicio = numeroServicio;
     }
-    
+
     public String goToCrearServicio() {
         return "crear-servicio?faces-redirect=true";
+    }
+
+    public List<Servicio> getServicioList() {
+        return servicioList;
+    }
+
+    public void setServicioList(List<Servicio> servicioList) {
+        this.servicioList = servicioList;
     }
 
 }
