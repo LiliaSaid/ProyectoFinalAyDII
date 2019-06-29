@@ -92,6 +92,11 @@ body{
     color: #333;
 }
 
+.ui-growl {
+    top: auto !important;
+    bottom: 20px;
+}
+
 @media (max-width: 600px) {
     .center_content{
         float:none;
