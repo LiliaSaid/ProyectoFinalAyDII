@@ -69,7 +69,7 @@ body{
     background-position-y: center;
 }
 
-.center_content{    
+.center_content{
     background: none;
     position: relative;
     width: 480px;
@@ -90,4 +90,15 @@ body{
 .ui-menu.ui-menubar .ui-menuitem .ui-menuitem-link{
     font-weight: bold;
     color: #333;
+}
+
+@media (max-width: 600px) {
+    .center_content{
+        float:none;
+        width: auto;
+        padding: 10px 0;
+        margin: 0 10px;
+        top: 0;
+        transform: none;
+    }   
 }
