@@ -5,6 +5,8 @@
  */
 package aplicacion.modelo.dominio;
 
+import java.util.Date;
+
 /**
  *
  * @author LILI-PC
@@ -12,22 +14,26 @@ package aplicacion.modelo.dominio;
 public class Factura {
 
     private int id;
+    private int empresaId;
     private int numeroDeServicio;
     private int numeroDeFactura;
     private String domicilio;
     private double importe;
     private String titularFactura;
+    private Date fechaVencimiento;
 
     public Factura() {
     }
 
-    public Factura(int id, int numeroDeServicio, int numeroDeFactura, String domicilio, double importe, String titularFactura) {
+    public Factura(int id, int empresaId, int numeroDeServicio, int numeroDeFactura, String domicilio, double importe, String titularFactura, Date fechaVencimiento) {
         this.id = id;
+        this.empresaId = empresaId;
         this.numeroDeServicio = numeroDeServicio;
         this.numeroDeFactura = numeroDeFactura;
         this.domicilio = domicilio;
         this.importe = importe;
         this.titularFactura = titularFactura;
+        this.fechaVencimiento = fechaVencimiento;
     }
     
     public int getId() {
@@ -76,6 +82,22 @@ public class Factura {
 
     public void setTitularFactura(String titularFactura) {
         this.titularFactura = titularFactura;
+    }
+
+    public int getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresa(int empresaId) {
+        this.empresaId = empresaId;
+    }
+
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
     }
     
     

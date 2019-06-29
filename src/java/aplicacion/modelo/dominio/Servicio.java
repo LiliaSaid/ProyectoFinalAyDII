@@ -18,7 +18,7 @@ public class Servicio {
         
     }
     
-    public Servicio(int id, String rubro, String nombre) {
+    public Servicio(int id, String nombre, String rubro) {
         this.id = id;
         this.rubro = rubro;
         this.nombre = nombre;

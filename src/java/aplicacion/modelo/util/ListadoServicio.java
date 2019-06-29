@@ -14,44 +14,45 @@ import java.util.List;
  * @author sbalgass
  */
 public class ListadoServicio {
+
     private List<Servicio> listaServicios;
 
     public ListadoServicio() {
         listaServicios = new ArrayList<>();
-        
-        listaServicios.add(new Servicio(218003, "Luz y Agua",               "Ejesa"));
-        listaServicios.add(new Servicio(218033, "Luz y Agua",               "Agua de los Andes"));
-        listaServicios.add(new Servicio(418004, "Telefonia",                "Telecom"));
-        listaServicios.add(new Servicio(418014, "Telefonia",                "Movistar"));
-        listaServicios.add(new Servicio(418024, "Telefonia",                "Personal"));
-        listaServicios.add(new Servicio(418034, "Telefonia",                "Claro"));
-        listaServicios.add(new Servicio(718059, "Proveedores de Internet",  "Wirenet"));
-        listaServicios.add(new Servicio(718069, "Proveedores de Internet",  "Telecentro"));
-        listaServicios.add(new Servicio(170009, "Operadoras de TV",         "Canal 2"));
-        listaServicios.add(new Servicio(170019, "Operadoras de TV",         "Canal 4"));
-        
-    }    
-    
-    public void agregar(Servicio servicio){
+
+        listaServicios.add(new Servicio(1, "Ejesa", "Luz y Agua"));
+        listaServicios.add(new Servicio(2, "Agua de los Andes", "Luz y Agua"));
+        listaServicios.add(new Servicio(3, "Telecom", "Telefonia"));
+        listaServicios.add(new Servicio(4, "Movistar", "Telefonia"));
+        listaServicios.add(new Servicio(5, "Personal", "Telefonia"));
+        listaServicios.add(new Servicio(6, "Claro", "Telefonia"));
+        listaServicios.add(new Servicio(7, "Wirenet", "Proveedores de Internet"));
+        listaServicios.add(new Servicio(8, "Telecentro", "Proveedores de Internet"));
+        listaServicios.add(new Servicio(9, "Canal 2", "Operadoras de TV"));
+        listaServicios.add(new Servicio(10, "Canal 4", "Operadoras de TV"));
+
+    }
+
+    public void agregar(Servicio servicio) {
         listaServicios.add(servicio);
     }
-    
-    public void eliminar(Servicio servicio){
-        for(int i = 0; i< listaServicios.size();i++){
-            if(listaServicios.get(i).getId() == servicio.getId()){
+
+    public void eliminar(Servicio servicio) {
+        for (int i = 0; i < listaServicios.size(); i++) {
+            if (listaServicios.get(i).getId() == servicio.getId()) {
                 listaServicios.remove(i);
             }
         }
     }
-    
-    public void modificar(Servicio servicioModificado){
-        for(Servicio servicio : listaServicios){
-            if(servicio.getId() == servicioModificado.getId()){
+
+    public void modificar(Servicio servicioModificado) {
+        for (Servicio servicio : listaServicios) {
+            if (servicio.getId() == servicioModificado.getId()) {
                 servicio = servicioModificado;
             }
         }
     }
-    
+
     public List<Servicio> getListaServicios() {
         return listaServicios;
     }

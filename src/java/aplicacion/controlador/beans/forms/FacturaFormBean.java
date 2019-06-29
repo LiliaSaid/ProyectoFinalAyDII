@@ -45,23 +45,21 @@ public class FacturaFormBean implements Serializable {
                             Integer.parseInt(params.get("numero")));
         }
         
-        if (params.get("servicio") != null) {
+        if (params.get("empresa") != null) {
             FacesContext.getCurrentInstance().getExternalContext()
-                    .getSessionMap().put(
-                            "servicio",
-                            Integer.parseInt(params.get("servicio")));
+                    .getSessionMap().put("empresa", Integer.parseInt(params.get("empresa")));
         }
     }
 
     @PostConstruct
     public void init() {
-        int servicio = (int) FacesContext.getCurrentInstance().getExternalContext()
-                .getSessionMap().get("servicio");
+        int empresa = (int) FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().get("empresa");
         
         int numero = (int) FacesContext.getCurrentInstance().getExternalContext()
                 .getSessionMap().get("numero");
 
-        facturaList = facturaBean.getFacturaListByServicioYNumero(servicio, numero);
+        facturaList = facturaBean.getFacturaListByEmpresaYNumero(empresa, numero);
 
         for (Factura unaFactura : facturaList) {
             titularFactura = unaFactura.getTitularFactura();

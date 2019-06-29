@@ -45,12 +45,12 @@ public class IFacturaDAOImp implements Serializable, IFacturaDAO {
     }
 
     @Override
-    public List<Factura> obtenerFacturasSegunServicioYNumero(int servicio, int numero) {
+    public List<Factura> obtenerFacturasSegunEmpresaYNumero(int empresa, int numero) {
         List<Factura> listadoFacturas = new ArrayList<>();
 
         for (Factura unaFactura : obtenerFacturas()) {
-            if (unaFactura.getNumeroDeFactura() == numero &&
-                unaFactura.getNumeroDeServicio() == servicio) {
+            if (unaFactura.getNumeroDeServicio() == numero &&
+                unaFactura.getEmpresaId() == empresa) {
                 listadoFacturas.add(unaFactura);
             }
         }

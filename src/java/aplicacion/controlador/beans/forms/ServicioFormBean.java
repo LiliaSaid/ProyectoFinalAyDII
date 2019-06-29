@@ -47,7 +47,7 @@ public class ServicioFormBean implements Serializable {
     }
     
     public String buscarFacturasPorServicioYEmpresa(){
-        return "facturas?faces-redirect=true&servicio="+servicio+
+        return "facturas?faces-redirect=true&empresa="+servicio+
                 "&numero="+numeroServicio;
     }
 
