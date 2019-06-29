@@ -86,3 +86,8 @@ body{
     font-weight: bold;
     margin-right: 20px;
 }
+
+.ui-menu.ui-menubar .ui-menuitem .ui-menuitem-link{
+    font-weight: bold;
+    color: #333;
+}
