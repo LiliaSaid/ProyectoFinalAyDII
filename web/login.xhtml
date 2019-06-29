@@ -16,7 +16,7 @@
                     <center>
                         <h:form>
                             <p:growl id="mensajes" showDetail="true"/>
-                            <h:panelGrid columns="2" cellpadding="8">
+                            <h:panelGrid rendered="#{loginFormBean.checkLoggedStatus()}" columns="2" cellpadding="8">
 
                                 <p:outputLabel id="lblLogin" value="Email:"/>
                                 <p:inputText id="Login" value="#{loginFormBean.email}"

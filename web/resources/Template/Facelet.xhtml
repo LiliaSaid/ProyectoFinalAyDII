@@ -23,6 +23,8 @@
 
                     <f:facet name="options" >
 
+                        <h:outputText value="#{loginFormBean.getUserName()}" class="user-name"/>
+                        
                         <p:commandButton id="brn_login" 
                                          rendered="#{!loginFormBean.isLogged()}"
                                          value="Ingresar"

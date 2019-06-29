@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -34,7 +35,7 @@ public class FacturaFormBean implements Serializable {
             } catch (IOException ex) {
             }
         }
-        
+
         Map<String, String> params = FacesContext.getCurrentInstance().
                 getExternalContext().getRequestParameterMap();
 
@@ -44,7 +45,7 @@ public class FacturaFormBean implements Serializable {
                             "numero",
                             Integer.parseInt(params.get("numero")));
         }
-        
+
         if (params.get("empresa") != null) {
             FacesContext.getCurrentInstance().getExternalContext()
                     .getSessionMap().put("empresa", Integer.parseInt(params.get("empresa")));
@@ -55,7 +56,7 @@ public class FacturaFormBean implements Serializable {
     public void init() {
         int empresa = (int) FacesContext.getCurrentInstance().getExternalContext()
                 .getSessionMap().get("empresa");
-        
+
         int numero = (int) FacesContext.getCurrentInstance().getExternalContext()
                 .getSessionMap().get("numero");
 
@@ -66,11 +67,21 @@ public class FacturaFormBean implements Serializable {
             domicilio = unaFactura.getDomicilio();
             break;
         }
-
     }
 
-    public FacturaBean getFacturaBean() {
-        return facturaBean;
+    public String procederAlCheckout() {
+        String result = "checkout?faces-redirect=true";
+        
+        if (facturaSelected.isEmpty()) {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Seleccione las facturas a pagar."));
+            result = "";
+        }
+        
+        FacesContext.getCurrentInstance().getExternalContext()
+                    .getSessionMap().put("facturasAPagar", facturaSelected);
+        
+        return result;
     }
 
     public void toggleCheckbox() {
@@ -79,6 +90,10 @@ public class FacturaFormBean implements Serializable {
             newSubTotal += factura.getImporte();
         }
         this.subTotal = newSubTotal;
+    }
+
+    public FacturaBean getFacturaBean() {
+        return facturaBean;
     }
 
     public void setFacturaBean(FacturaBean facturaBean) {
