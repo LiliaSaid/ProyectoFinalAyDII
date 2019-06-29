@@ -102,5 +102,10 @@ public class LoginFormBean implements Serializable {
         Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         return user != null;
     }
+    
+    public String getUserName(){
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        return (user != null) ? "Bienvenido/a " + user.getNombre() : "";
+    }
 
 }
