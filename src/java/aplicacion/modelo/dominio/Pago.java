@@ -14,7 +14,7 @@ import java.util.Date;
 public class Pago {
 
     private int id;
-    private int numeroDeTarjeta;
+    private String numeroDeTarjeta;
     private int codigoDeSeguridad;
     private String marca;
     private Date fechaVecimiento;
@@ -25,7 +25,7 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(int id, int numeroDeTarjeta, int codigoDeSeguridad, String marca, Date fechaVecimiento, Date fecha, int estado) {
+    public Pago(int id, String numeroDeTarjeta, int codigoDeSeguridad, String marca, Date fechaVecimiento, Date fecha, int estado) {
         this.id = id;
         this.numeroDeTarjeta = numeroDeTarjeta;
         this.codigoDeSeguridad = codigoDeSeguridad;
@@ -43,11 +43,11 @@ public class Pago {
         this.id = id;
     }
 
-    public int getNumeroDeTarjeta() {
+    public String getNumeroDeTarjeta() {
         return numeroDeTarjeta;
     }
 
-    public void setNumeroDeTarjeta(int numeroDeTarjeta) {
+    public void setNumeroDeTarjeta(String numeroDeTarjeta) {
         this.numeroDeTarjeta = numeroDeTarjeta;
     }
 
