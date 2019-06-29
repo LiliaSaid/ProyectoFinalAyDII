@@ -72,7 +72,7 @@ body{
 .center_content{    
     background: none;
     position: relative;
-    max-width: 480px;
+    width: 480px;
     margin: -20px 50px 0 0;
     top: 50%;
     float: right;
