@@ -35,6 +35,8 @@
                                     <f:validateLength minimum="8" ></f:validateLength>
                                 </p:password>
 
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" cellpadding="8">
                                 <p:commandButton value="Ingresar"
                                                  action="#{loginFormBean.verifyCredentials()}"
                                                  update="mensajes"/>
