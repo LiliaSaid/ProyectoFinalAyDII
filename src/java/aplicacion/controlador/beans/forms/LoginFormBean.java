@@ -3,6 +3,7 @@ package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.UsuarioBean;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -106,6 +107,17 @@ public class LoginFormBean implements Serializable {
     public String getUserName(){
         Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         return (user != null) ? "Bienvenido/a " + user.getNombre() : "";
+    }
+    
+    public boolean checkLoggedStatus(){
+        if (this.isLogged()){
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("pagar-servicio.xhtml");
+            } catch (IOException ex) {
+            }
+        }
+        
+        return true;
     }
 
 }
