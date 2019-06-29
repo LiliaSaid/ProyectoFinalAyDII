@@ -1,13 +1,18 @@
 package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.FacturaBean;
+import aplicacion.controlador.beans.PagoBean;
 import aplicacion.modelo.dominio.Factura;
+import aplicacion.modelo.dominio.Pago;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -19,6 +24,9 @@ public class CheckoutFormBean implements Serializable {
 
     @ManagedProperty(value = "#{facturaBean}")
     private FacturaBean facturaBean;
+
+    @ManagedProperty(value = "#{pagoBean}")
+    private PagoBean pagoBean;
 
     private List<Factura> facturas;
     private double subTotal;
@@ -52,6 +60,31 @@ public class CheckoutFormBean implements Serializable {
 
     public String pagarFacturas() {
 
+        Pago nuevoPago = new Pago();
+        nuevoPago.setId(pagoBean.getLastPagoId() + 1);
+        nuevoPago.setMarca(this.marcaTarjeta);
+        nuevoPago.setNumeroDeTarjeta(this.numeroTarjeta);
+        nuevoPago.setTitularTarjeta(this.titularTarjeta);
+        nuevoPago.setCodigoDeSeguridad(this.codigoTarjeta);
+        nuevoPago.setFecha(Calendar.getInstance().getTime());
+        nuevoPago.setEstado(0);
+
+        try {
+            nuevoPago.setFechaVecimiento(
+                    new SimpleDateFormat("MM/yyyy")
+                    .parse(this.vencimientoTarjeta));
+        } catch (ParseException ex) {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "",
+                    "Error al verificar la fecha de vencimiento."));
+        }
+
+        // se agrega un nuevo pago
+        pagoBean.agregarPago(nuevoPago);
+        
+        
+        
+
         return "";
     }
 
@@ -61,6 +94,14 @@ public class CheckoutFormBean implements Serializable {
 
     public void setFacturaBean(FacturaBean facturaBean) {
         this.facturaBean = facturaBean;
+    }
+
+    public PagoBean getPagoBean() {
+        return pagoBean;
+    }
+
+    public void setPagoBean(PagoBean pagoBean) {
+        this.pagoBean = pagoBean;
     }
 
     public List<Factura> getFacturas() {
