@@ -18,7 +18,5 @@ public interface IServicioDAO {
     void borrar(Servicio servicio);
     void actualizar(Servicio servicio);
     List<Servicio> obtenerServicios();
-    List<Servicio> obtenerServiciosPorRubro(String rubro);
-    List<String> obtenerRubros();
     
 }

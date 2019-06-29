@@ -1,10 +1,7 @@
 package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.ServicioBean;
-import aplicacion.modelo.dominio.Servicio;
 import java.io.Serializable;
-import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -18,27 +15,9 @@ public class RubroFormBean implements Serializable {
 
     private String rubro;
     private String empresa;
-    private List<Servicio> servicioList;
-    private List<String> rubroList;
-
+            
     public RubroFormBean() {
-
-    }
-
-    @PostConstruct
-    public void init() {
-        rubroList = servicioBean.getRubroList();
-
-        servicioList = servicioBean.getServicioList();
-
-    }
-
-    public void applyFilter() {
-        if (rubro == null || rubro.isEmpty()) {
-            return;
-        }
-
-        servicioList = servicioBean.getServicioListByRubro(rubro);
+        
     }
 
     public ServicioBean getServicioBean() {
@@ -68,21 +47,6 @@ public class RubroFormBean implements Serializable {
     public String goToPagarServicio() {
         return "pagar-servicio?faces-redirect=true";
     }
-
-    public List<String> getRubroList() {
-        return rubroList;
-    }
-
-    public void setRubroList(List<String> rubroList) {
-        this.rubroList = rubroList;
-    }
-
-    public List<Servicio> getServicioList() {
-        return servicioList;
-    }
-
-    public void setServicioList(List<Servicio> servicioList) {
-        this.servicioList = servicioList;
-    }
-
+    
+    
 }

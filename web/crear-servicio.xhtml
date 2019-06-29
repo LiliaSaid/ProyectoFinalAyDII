@@ -11,7 +11,7 @@
         <ui:composition template="./resources/Template/Facelet.xhtml"> 
             <ui:define name="content">
 
-                <p:panel header="Agregar servicio">
+                <p:panel header="Crear servicio">
                     <center>
                         <h:form>
                             <p:growl id="mensajes" showDetail="true"/>
@@ -21,26 +21,23 @@
                                 <h:panelGroup>
                                     <p:selectOneMenu id="rubroList" 
                                                      value="#{rubroFormBean.rubro}">
-                                        <p:ajax event="valueChange" update="empresaList"
-                                                listener="#{rubroFormBean.applyFilter}" />
-                                        <f:selectItem itemLabel="Buscar" noSelectionOption="true"/>
-                                        <f:selectItems value="#{rubroFormBean.rubroList}" />
+                                        
+                                        <f:selectItem itemLabel="Telefonia" itemValue="1"/>
+                                        <f:selectItem itemLabel="Proveedores de Internet" itemValue="2"/>
+                                        <f:selectItem itemLabel="Operadoras de TV" itemValue="3"/>
                                     </p:selectOneMenu>
 
                                 </h:panelGroup>
 
                                 <p:outputLabel for="empresaList" value="Empresa" />
                                 <p:selectOneListbox id="empresaList" value="#{rubroFormBean.empresa}">
-
-                                    <f:selectItems var="servicio" value="#{rubroFormBean.servicioList}"
-                                                   itemValue="#{servicio.id}" itemLabel="#{servicio.nombre}"/>
-
-
+                                    <f:selectItem itemLabel="Canal 2" itemValue="1" />
+                                    <f:selectItem itemLabel="Canal 4" itemValue="2" />
                                 </p:selectOneListbox>
 
                             </h:panelGrid>
 
-                            <p:commandButton value="Agregar" action="#{rubroFormBean.goToPagarServicio()}" />
+                            <p:commandButton value="Crear" action="#{rubroFormBean.goToPagarServicio()}" />
 
 
                         </h:form>

@@ -32,12 +32,5 @@ public class ServicioBean {
         return iServicioDAO.obtenerServicios();
     }
     
-    public List<String> getRubroList(){
-        return iServicioDAO.obtenerRubros();
-    }
-    
-    public List<Servicio> getServicioListByRubro(String rubro){
-        return iServicioDAO.obtenerServiciosPorRubro(rubro);
-    }
     
 }
