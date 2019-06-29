@@ -108,6 +108,9 @@ public class CheckoutFormBean implements Serializable {
         // Se crea la operacion
         operacionBean.crear(nuevaOperacion);
 
+        FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().put("ultimaOperacion", nuevaOperacion);
+        
         return "exito?faces-redirect=true";
     }
 
