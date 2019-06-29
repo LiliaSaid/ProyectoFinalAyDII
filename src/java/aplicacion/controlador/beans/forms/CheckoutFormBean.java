@@ -1,8 +1,11 @@
 package aplicacion.controlador.beans.forms;
 
 import aplicacion.controlador.beans.FacturaBean;
+import aplicacion.controlador.beans.OperacionBean;
 import aplicacion.controlador.beans.PagoBean;
+import aplicacion.controlador.beans.ServicioBean;
 import aplicacion.modelo.dominio.Factura;
+import aplicacion.modelo.dominio.Operacion;
 import aplicacion.modelo.dominio.Pago;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.IOException;
@@ -28,8 +31,15 @@ public class CheckoutFormBean implements Serializable {
     @ManagedProperty(value = "#{pagoBean}")
     private PagoBean pagoBean;
 
+    @ManagedProperty(value = "#{servicioBean}")
+    private ServicioBean servicioBean;
+
+    @ManagedProperty(value = "#{operacionBean}")
+    private OperacionBean operacionBean;
+
     private List<Factura> facturas;
     private double subTotal;
+    private Usuario usuario;
 
     private String marcaTarjeta;
     private String numeroTarjeta;
@@ -38,7 +48,7 @@ public class CheckoutFormBean implements Serializable {
     private int codigoTarjeta;
 
     public CheckoutFormBean() {
-        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         if (usuario == null) {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
@@ -79,13 +89,26 @@ public class CheckoutFormBean implements Serializable {
                     "Error al verificar la fecha de vencimiento."));
         }
 
-        // se agrega un nuevo pago
+        // Se crea el Pago
         pagoBean.agregarPago(nuevoPago);
-        
-        
-        
 
-        return "";
+        Operacion nuevaOperacion = new Operacion();
+        nuevaOperacion.setId(operacionBean.getLastOperacionId() + 1);
+        nuevaOperacion.setFecha(Calendar.getInstance().getTime());
+        nuevaOperacion.setPago(nuevoPago);
+        nuevaOperacion.setUsuario(usuario);
+
+        facturas.stream().forEach((unaFactura) -> {
+            nuevaOperacion.setServicio(servicioBean.
+                    obtenerUnServicioPorId(unaFactura.getEmpresaId()));
+        });
+        
+        nuevaOperacion.setFactura(facturas);
+        
+        // Se crea la operacion
+        operacionBean.crear(nuevaOperacion);
+
+        return "exito?faces-redirect=true";
     }
 
     public FacturaBean getFacturaBean() {
@@ -160,4 +183,29 @@ public class CheckoutFormBean implements Serializable {
         this.codigoTarjeta = codigoTarjeta;
     }
 
+    public ServicioBean getServicioBean() {
+        return servicioBean;
+    }
+
+    public void setServicioBean(ServicioBean servicioBean) {
+        this.servicioBean = servicioBean;
+    }
+
+    public OperacionBean getOperacionBean() {
+        return operacionBean;
+    }
+
+    public void setOperacionBean(OperacionBean operacionBean) {
+        this.operacionBean = operacionBean;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
 }
