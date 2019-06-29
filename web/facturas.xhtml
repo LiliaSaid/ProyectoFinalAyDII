@@ -41,6 +41,13 @@
                                 <p:column headerText="N° Factura">
                                     <h:outputText value="#{factura.numeroDeFactura}" />
                                 </p:column>
+                                
+                                <p:column headerText="Vencimiento">
+                                    <h:outputText value="#{factura.fechaVencimiento}">
+                                        <f:convertDateTime locale="es_AR" dateStyle="long"/>
+                                    </h:outputText>
+                                </p:column>
+                                
                                 <p:column headerText="Importe">
                                     <h:outputText value="#{factura.importe}">
                                         <f:convertNumber currencySymbol="$ " 
