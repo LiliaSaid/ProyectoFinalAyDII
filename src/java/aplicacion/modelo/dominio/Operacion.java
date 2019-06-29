@@ -6,6 +6,7 @@
 package aplicacion.modelo.dominio;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -18,16 +19,18 @@ public class Operacion {
     private Pago pago;
     private Servicio servicio;
     private Usuario usuario;
+    private List<Factura> factura;
 
     public Operacion() {
     }
 
-    public Operacion(int id, Date fecha, Pago pago, Servicio servicio, Usuario usuario) {
+    public Operacion(int id, Date fecha, Pago pago, Servicio servicio, Usuario usuario, List<Factura> factura) {
         this.id = id;
         this.fecha = fecha;
         this.pago = pago;
         this.servicio = servicio;
         this.usuario = usuario;
+        this.factura = factura;
     }
 
     public int getId() {
@@ -69,9 +72,13 @@ public class Operacion {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
-    
-    
-            
+
+    public List<Factura> getFactura() {
+        return factura;
+    }
+
+    public void setFactura(List<Factura> factura) {
+        this.factura = factura;
+    }
+
 }

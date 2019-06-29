@@ -17,8 +17,11 @@ import java.util.List;
  */
 public class IOperacionDAOImp implements IOperacionDAO, Serializable {
     private ListadoOperaciones listadoOperacion;
-    
-    
+
+    public IOperacionDAOImp() {
+        this.listadoOperacion = new ListadoOperaciones();
+    }
+        
     @Override
     public void crear(Operacion operacion) {
         listadoOperacion.agregar(operacion);
