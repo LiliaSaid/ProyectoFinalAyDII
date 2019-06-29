@@ -6,6 +6,7 @@
 package aplicacion.modelo.util;
 
 import aplicacion.modelo.dominio.Pago;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class ListadoPago {
     private List<Pago> listaPagos;
 
     public ListadoPago() {
-        
+        listaPagos = new ArrayList<>();
     }    
     
     public void agregar(Pago pago){
