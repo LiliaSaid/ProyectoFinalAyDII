@@ -18,6 +18,10 @@ import java.util.List;
 public class IPagoDAOImp implements IPagoDAO, Serializable{
 
     private ListadoPago listadoPago; 
+
+    public IPagoDAOImp() {
+        this.listadoPago = new ListadoPago();
+    }
     
     @Override
     public void crear(Pago pago) {
