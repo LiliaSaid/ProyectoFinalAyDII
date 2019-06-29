@@ -14,7 +14,7 @@
                 <p:panel header="Pague sus servicios">
                     <center>
                         <h:form id="pagoServiciosForm">
-                            <p:growl id="mensajes" showDetail="true"/>
+                            <p:growl id="mensajes" showDetail="true" />
 
                             <h:panelGrid columns="2" cellpadding="5">
                                 <p:outputLabel value="Titular:" for="titularText" />
@@ -32,9 +32,9 @@
                                          selection="#{facturaFormBean.facturaSelected}" 
                                          rowKey="#{factura.id}" rowSelectMode="checkbox"
                                          style="margin-bottom:0">
-                                <p:ajax event="rowSelectCheckbox" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm:subTotalText"/>
-                                <p:ajax event="rowUnselectCheckbox" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm:subTotalText" />
-                                <p:ajax event="toggleSelect" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm:subTotalText" />
+                                <p:ajax event="rowSelectCheckbox" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm"/>
+                                <p:ajax event="rowUnselectCheckbox" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm" />
+                                <p:ajax event="toggleSelect" listener="#{facturaFormBean.toggleCheckbox}" update=":pagoServiciosForm" />
                                 <f:facet name="header">
                                     Facturas
                                 </f:facet>
@@ -61,7 +61,7 @@
                                 <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                                 
                             </p:dataTable>
-
+                           
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:panelGroup>
                                     <p:outputLabel value="SubTotal: " for="subTotalText" />
@@ -75,7 +75,11 @@
                                     </p:inputText>
                                 </h:panelGroup>
 
-                                <p:commandButton value="Enviar"/>
+                                <p:commandButton
+                                                id="btn-buy"
+                                                update="mensajes"
+                                                action="#{facturaFormBean.procederAlCheckout}"
+                                                value="Pagar"/>
                             </h:panelGrid>
 
                         </h:form>
