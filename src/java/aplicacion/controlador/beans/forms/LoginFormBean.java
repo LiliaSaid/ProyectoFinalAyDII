@@ -112,7 +112,7 @@ public class LoginFormBean implements Serializable {
     public boolean checkLoggedStatus(){
         if (this.isLogged()){
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("pagar-servicio.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/pagar-servicio.xhtml");
             } catch (IOException ex) {
             }
         }
