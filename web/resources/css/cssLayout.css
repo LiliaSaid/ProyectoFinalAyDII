@@ -58,4 +58,21 @@
   text-decoration : underline;
 }
 
+html, body{
+    margin: 0;
+    height: 100%;
+}
 
+body{
+    background: url("https://www.verywellhealth.com/thmb/8cp_3dZRJay8AZ9X2lRmOLZ-C9k=/1500x1000/filters:fill(87E3EF,1)/What-are-the-three-levels-of-autism-260233-5b9f12fac9e77c0050171771.png");
+}
+
+.center_content{    
+    padding: 20px 0 0;
+    background: none;
+}
+
+.center_content > .ui-panel{
+    max-width: 470px;
+    
+}
