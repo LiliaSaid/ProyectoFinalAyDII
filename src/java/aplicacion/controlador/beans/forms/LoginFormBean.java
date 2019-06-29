@@ -104,10 +104,15 @@ public class LoginFormBean implements Serializable {
         return user != null;
     }
     
+    public String getUserName(){
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        return (user != null) ? "Bienvenido/a " + user.getNombre() : "";
+    }
+    
     public boolean checkLoggedStatus(){
         if (this.isLogged()){
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("pagar-servicio.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/pagar-servicio.xhtml");
             } catch (IOException ex) {
             }
         }

@@ -18,19 +18,17 @@
 
                             <h:panelGrid columns="1" cellpadding="5">
                                 <p:outputLabel value="Buscar empresa por rubro:" for="rubroList" />
-                                <h:panelGroup>
-                                    <p:selectOneMenu id="rubroList" 
-                                                     value="#{rubroFormBean.rubro}">
-                                        <p:ajax event="valueChange" update="empresaList"
-                                                listener="#{rubroFormBean.applyFilter}" />
-                                        <f:selectItem itemLabel="Buscar" noSelectionOption="true"/>
-                                        <f:selectItems value="#{rubroFormBean.rubroList}" />
-                                    </p:selectOneMenu>
 
-                                </h:panelGroup>
+                                <p:selectOneMenu id="rubroList" 
+                                                 value="#{rubroFormBean.rubro}">
+                                    <p:ajax event="valueChange" update="empresaList"
+                                            listener="#{rubroFormBean.applyFilter}" />
+                                    <f:selectItem itemLabel="Buscar" noSelectionOption="true"/>
+                                    <f:selectItems value="#{rubroFormBean.rubroList}" />
+                                </p:selectOneMenu>
 
                                 <p:outputLabel for="empresaList" value="Empresa" />
-                                <p:selectOneListbox id="empresaList" value="#{rubroFormBean.empresa}">
+                                <p:selectOneListbox style="width: 100%" id="empresaList" value="#{rubroFormBean.empresa}">
 
                                     <f:selectItems var="servicio" value="#{rubroFormBean.servicioList}"
                                                    itemValue="#{servicio.id}" itemLabel="#{servicio.nombre}"/>
