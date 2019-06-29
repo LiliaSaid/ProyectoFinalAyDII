@@ -6,6 +6,7 @@
 package aplicacion.modelo.util;
 
 import aplicacion.modelo.dominio.Operacion;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class ListadoOperaciones {
     private List<Operacion> listaOperaciones;
 
     public ListadoOperaciones() {
-        
+        listaOperaciones = new ArrayList<>();
     }
     
     public void agregar(Operacion operacion){
