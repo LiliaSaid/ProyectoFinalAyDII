@@ -47,15 +47,15 @@
 }
 
 #top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
 }
 
 html, body{
@@ -64,15 +64,23 @@ html, body{
 }
 
 body{
-    background: url("https://www.verywellhealth.com/thmb/8cp_3dZRJay8AZ9X2lRmOLZ-C9k=/1500x1000/filters:fill(87E3EF,1)/What-are-the-three-levels-of-autism-260233-5b9f12fac9e77c0050171771.png");
+    background: url(../Imagenes/fondo.jpg);
+    background-size: cover;
+    background-position-y: center;
 }
 
 .center_content{    
-    padding: 20px 0 0;
     background: none;
+    position: relative;
+    max-width: 480px;
+    margin: -20px 50px 0 0;
+    top: 50%;
+    float: right;
+    padding: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .center_content > .ui-panel{
-    max-width: 470px;
-    
 }
