@@ -78,6 +78,9 @@ public class FacturaFormBean implements Serializable {
             result = "";
         }
         
+        FacesContext.getCurrentInstance().getExternalContext()
+                    .getSessionMap().put("facturasAPagar", facturaSelected);
+        
         return result;
     }
 
