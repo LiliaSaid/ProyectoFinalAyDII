@@ -10,7 +10,6 @@
     </h:head>
     <h:body>
         <ui:composition template="./resources/Template/Facelet.xhtml">
-            <ui:define name="top"></ui:define>
             <ui:define name="content">
                 <p:panel header="Efectuar pago">
                     <center>
@@ -54,11 +53,11 @@
                                                      locale="es_AR"/>
                                 </p:inputText>
 
-                                <p:commandButton value="Pagar"
-
-                                                 update="mensajes"/>
-
                             </h:panelGrid>
+                            
+                            <p:commandButton value="Pagar"
+                                                 update="mensajes"/>
+                            
                         </h:form>
 
                     </center>
